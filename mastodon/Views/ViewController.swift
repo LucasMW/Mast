@@ -1172,18 +1172,18 @@ class ViewController: UITabBarController, UITabBarControllerDelegate, UITextFiel
             )
         }
         
-        let request4 = DomainBlocks.block(domain: "gab.com")
-        StoreStruct.client.run(request4) { (statuses) in
-            if let stat = (statuses.value) {
-                print("blocked")
-            }
-        }
-        let request5 = DomainBlocks.block(domain: "gab.ai")
-        StoreStruct.client.run(request5) { (statuses) in
-            if let stat = (statuses.value) {
-                print("blocked")
-            }
-        }
+//        let request4 = DomainBlocks.block(domain: "gab.com")
+//        StoreStruct.client.run(request4) { (statuses) in
+//            if let stat = (statuses.value) {
+//                print("blocked")
+//            }
+//        }
+//        let request5 = DomainBlocks.block(domain: "gab.ai")
+//        StoreStruct.client.run(request5) { (statuses) in
+//            if let stat = (statuses.value) {
+//                print("blocked")
+//            }
+//        }
         let request6 = DomainBlocks.block(domain: "exited.eu")
         StoreStruct.client.run(request6) { (statuses) in
             if let stat = (statuses.value) {
@@ -2716,7 +2716,7 @@ class ViewController: UITabBarController, UITabBarControllerDelegate, UITextFiel
             DispatchQueue.main.async {
                 self.textField.resignFirstResponder()
             
-                if returnedText.contains("gab.com") || returnedText.contains("gab.ai") || returnedText.contains("exited.eu") { return }
+                if returnedText.contains("exited.eu") { return }
             
             // Send off returnedText to client
             if self.newInstance {

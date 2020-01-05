@@ -747,18 +747,18 @@ class ColumnViewController: UIViewController, UIGestureRecognizerDelegate, UNUse
             }
         }
         
-        let request4 = DomainBlocks.block(domain: "gab.com")
-        StoreStruct.client.run(request4) { (statuses) in
-            if let stat = (statuses.value) {
-                print("blocked")
-            }
-        }
-        let request5 = DomainBlocks.block(domain: "gab.ai")
-        StoreStruct.client.run(request5) { (statuses) in
-            if let stat = (statuses.value) {
-                print("blocked")
-            }
-        }
+//        let request4 = DomainBlocks.block(domain: "gab.com")
+//        StoreStruct.client.run(request4) { (statuses) in
+//            if let stat = (statuses.value) {
+//                print("blocked")
+//            }
+//        }
+//        let request5 = DomainBlocks.block(domain: "gab.ai")
+//        StoreStruct.client.run(request5) { (statuses) in
+//            if let stat = (statuses.value) {
+//                print("blocked")
+//            }
+//        }
         let request6 = DomainBlocks.block(domain: "exited.eu")
         StoreStruct.client.run(request6) { (statuses) in
             if let stat = (statuses.value) {

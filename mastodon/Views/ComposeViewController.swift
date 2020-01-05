@@ -445,7 +445,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate, UICollectionV
             #if compiler(>=5.1)
                 if #available(iOS 13.0, *) {
             z.action(.default("Compose Toot from Image Text".localized), image: nil) { (action, ind) in
-                self.textFromImage(self.selectedImage1.image!)
+                //self.textFromImage(self.selectedImage1.image!)
             }
                 }
                 #endif
@@ -518,7 +518,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate, UICollectionV
         #if compiler(>=5.1)
         if #available(iOS 13.0, *) {
             z.action(.default("Compose Toot from Image Text".localized), image: nil) { (action, ind) in
-                self.textFromImage(self.selectedImage2.image!)
+                //self.textFromImage(self.selectedImage2.image!)
             }
         }
         #endif
@@ -586,7 +586,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate, UICollectionV
         #if compiler(>=5.1)
         if #available(iOS 13.0, *) {
             z.action(.default("Compose Toot from Image Text".localized), image: nil) { (action, ind) in
-                self.textFromImage(self.selectedImage3.image!)
+                //self.textFromImage(self.selectedImage3.image!)
             }
         }
         #endif
@@ -652,7 +652,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate, UICollectionV
         #if compiler(>=5.1)
         if #available(iOS 13.0, *) {
             z.action(.default("Compose Toot from Image Text".localized), image: nil) { (action, ind) in
-                self.textFromImage(self.selectedImage4.image!)
+                //self.textFromImage(self.selectedImage4.image!)
             }
         }
         #endif
@@ -2749,7 +2749,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate, UICollectionV
         if #available(iOS 13.0, *) {
             z.action(.default("Compose Toot from Camera"), image: UIImage(named: "camcomp")) { (action, ind) in
 
-                self.cameraText()
+                //self.cameraText()
             }
         }
         #endif
@@ -4483,77 +4483,77 @@ class ComposeViewController: UIViewController, UITextViewDelegate, UICollectionV
 }
 
 #if compiler(>=5.1)
-extension ComposeViewController: VNDocumentCameraViewControllerDelegate {
-    
-    var vc = VNDocumentCameraViewController()
-    
-    @available(iOS 13.0, *)
-    func textFromImage(_ image1: UIImage) {
-        let request = VNRecognizeTextRequest { request, error in
-            guard let observations = request.results as? [VNRecognizedTextObservation] else {
-                return
-            }
-            
-            for observation in observations {
-                guard let bestCandidate = observation.topCandidates(1).first else {
-                    continue
-                }
-                
-                self.textView.text = "\(self.textView.text ?? "") \(bestCandidate.string ?? "")"
-            }
-        }
-        
-        request.recognitionLevel = .accurate
-        let requests = [request]
-        
-        guard let img = image1.cgImage else {
-            return
-        }
-        let handler = VNImageRequestHandler(cgImage: img, options: [:])
-        try? handler.perform(requests)
-    }
-    
-    @available(iOS 13.0, *)
-    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
-        let vc = self.vc as! VNDocumentCameraViewController
-        vc.dismiss(animated: true, completion: nil)
-        
-        let request = VNRecognizeTextRequest { request, error in
-            guard let observations = request.results as? [VNRecognizedTextObservation] else {
-                return
-            }
-            
-            for observation in observations {
-                guard let bestCandidate = observation.topCandidates(1).first else {
-                    continue
-                }
-                
-                self.textView.text = "\(self.textView.text ?? "") \(bestCandidate.string ?? "")"
-            }
-        }
-        
-        request.recognitionLevel = .accurate
-        let requests = [request]
-        
-        for i in 0 ..< scan.pageCount {
-            let image1 = scan.imageOfPage(at: i)
-            guard let img = image1.cgImage else {
-                return
-            }
-            let handler = VNImageRequestHandler(cgImage: img, options: [:])
-            try? handler.perform(requests)
-        }
-    }
-    
-    func cameraText() {
-        if #available(iOS 13.0, *) {
-            let vc = self.vc as! VNDocumentCameraViewController
-            vc.delegate = self
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true)
-        }
-    }
-}
+//extension ComposeViewController: VNDocumentCameraViewControllerDelegate {
+//
+//    var vc = VNDocumentCameraViewController()
+//
+//    @available(iOS 13.0, *)
+//    func textFromImage(_ image1: UIImage) {
+//        let request = VNRecognizeTextRequest { request, error in
+//            guard let observations = request.results as? [VNRecognizedTextObservation] else {
+//                return
+//            }
+//
+//            for observation in observations {
+//                guard let bestCandidate = observation.topCandidates(1).first else {
+//                    continue
+//                }
+//
+//                self.textView.text = "\(self.textView.text ?? "") \(bestCandidate.string ?? "")"
+//            }
+//        }
+//
+//        request.recognitionLevel = .accurate
+//        let requests = [request]
+//
+//        guard let img = image1.cgImage else {
+//            return
+//        }
+//        let handler = VNImageRequestHandler(cgImage: img, options: [:])
+//        try? handler.perform(requests)
+//    }
+//
+//    @available(iOS 13.0, *)
+//    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
+//        let vc = self.vc as! VNDocumentCameraViewController
+//        vc.dismiss(animated: true, completion: nil)
+//
+//        let request = VNRecognizeTextRequest { request, error in
+//            guard let observations = request.results as? [VNRecognizedTextObservation] else {
+//                return
+//            }
+//
+//            for observation in observations {
+//                guard let bestCandidate = observation.topCandidates(1).first else {
+//                    continue
+//                }
+//
+//                self.textView.text = "\(self.textView.text ?? "") \(bestCandidate.string ?? "")"
+//            }
+//        }
+//
+//        request.recognitionLevel = .accurate
+//        let requests = [request]
+//
+//        for i in 0 ..< scan.pageCount {
+//            let image1 = scan.imageOfPage(at: i)
+//            guard let img = image1.cgImage else {
+//                return
+//            }
+//            let handler = VNImageRequestHandler(cgImage: img, options: [:])
+//            try? handler.perform(requests)
+//        }
+//    }
+//
+//    func cameraText() {
+//        if #available(iOS 13.0, *) {
+//            let vc = self.vc as! VNDocumentCameraViewController
+//            vc.delegate = self
+//            vc.modalPresentationStyle = .fullScreen
+//            self.present(vc, animated: true)
+//        }
+//    }
+//}
 #endif
 
 extension PHAsset {
